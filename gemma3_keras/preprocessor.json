@@ -1,0 +1,45 @@
+{
+    "module": "keras_hub.src.models.gemma3.gemma3_causal_lm_preprocessor",
+    "class_name": "Gemma3CausalLMPreprocessor",
+    "config": {
+        "name": "gemma3_causal_lm_preprocessor",
+        "trainable": true,
+        "dtype": {
+            "module": "keras",
+            "class_name": "DTypePolicy",
+            "config": {
+                "name": "float32"
+            },
+            "registered_name": null
+        },
+        "tokenizer": {
+            "module": "keras_hub.src.models.gemma3.gemma3_tokenizer",
+            "class_name": "Gemma3Tokenizer",
+            "config": {
+                "name": "gemma3_tokenizer",
+                "trainable": true,
+                "dtype": {
+                    "module": "keras",
+                    "class_name": "DTypePolicy",
+                    "config": {
+                        "name": "int32"
+                    },
+                    "registered_name": null
+                },
+                "config_file": "tokenizer.json",
+                "proto": null,
+                "sequence_length": null,
+                "add_bos": false,
+                "add_eos": false
+            },
+            "registered_name": "keras_hub>Gemma3Tokenizer"
+        },
+        "config_file": "preprocessor.json",
+        "sequence_length": 1024,
+        "add_start_token": true,
+        "add_end_token": true,
+        "num_vision_tokens_per_image": 0,
+        "max_images_per_prompt": 0
+    },
+    "registered_name": "keras_hub>Gemma3CausalLMPreprocessor"
+}
