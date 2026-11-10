@@ -355,7 +355,9 @@ def chat(request: ChatRequest):
         except HTTPException:
             raise
         except Exception as exc:
-                     except Exception as exc:
+                      except HTTPException:
+            raise
+        except Exception as exc:
             error_detail = str(exc)
             if hasattr(exc, "response") and exc.response is not None:
                 error_detail = f"HTTP {exc.response.status_code}: {exc.response.text[:1000]}"
