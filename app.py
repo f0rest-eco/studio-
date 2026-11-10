@@ -355,7 +355,10 @@ def chat(request: ChatRequest):
         except HTTPException:
             raise
         except Exception as exc:
-            raise HTTPException(status_code=502, detail=f"Qwen fallback failed: {type(exc).__name__}")
+            error_detail = str(exc)
+if hasattr(exc, "response") and exc.response is not None:
+    error_detail = f"HTTP {exc.response.status_code}: {exc.response.text[:1000]}"
+raise HTTPException(status_code=502, detail=f"Qwen fallback failed: {error_detail}")
 
     # Orbis is always the primary model. Do not use ORBIS_BACKEND_URL or a
     # provider preset to bypass it; this route intentionally ignores that legacy mode.
